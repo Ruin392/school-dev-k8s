@@ -10,6 +10,7 @@ kubectl get secret
 kubectl get secret test -o yaml
 ```
 
+
 ## 2. Применим наш деплоймент
 
 Для этого выполним команду:
