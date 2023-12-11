@@ -21,12 +21,12 @@ spec:
       containers:
       - image: quay.io/testing-farm/nginx:1.12
         name: nginx
-        env:
+        env: # а эти переменные будут доступны только поду и его репликам  с именем  my-deployment
         - name: TEST
           value: foo
-        envFrom:
+        envFrom: # Вот тут мы передаем файл конфиг мап, который ранее мы применили apply
         - configMapRef:
-            name: my-configmap-env
+            name: my-configmap-env  # сюда передаем name из конфиг мапа
         ports:
         - containerPort: 80
         resources:
@@ -37,3 +37,16 @@ spec:
             cpu: 100m
             memory: 100Mi
 ...
+
+# Для того чтоб использовать configmap нам необходимо передать его поду 
+# если все окей, то по команде kubectl describe deployment.apps покажет нам вот такую строку
+#Environment Variables from:
+#      my-configmap-env  ConfigMap  Optional: false 
+
+# для того чтоб посмотреть что в данном файле находиться можно, либу руками посмотреть что есть в ней если есть доступ к нему
+# либо командой 
+# kubectl cm my-configmap-env (name из файла) -o  yaml
+# либо командой kubectl.exe exec -it имя контейнера -- env
+
+
+

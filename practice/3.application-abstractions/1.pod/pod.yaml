@@ -1,13 +1,21 @@
----
+--- # Начало документа это обязательный критерий файла
 # file: practice/2.application-abstractions/1.pod/pod.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: my-pod
-spec:
-  containers:
+apiVersion: v1 # Версия апи к которой обращаемся, есть версионность и там надо понимать различия, почитать!!!
+kind: Pod # Тип обьекта который будет создаваться
+metadata: # Метаданные контейнера
+  name: my-pod-1
+spec: # Специадизация, описание контейнера
+  containers: # это список в него можно задавать неограниченное кол-во контейнеров
   - image: quay.io/testing-farm/nginx:1.12
     name: nginx
     ports:
     - containerPort: 80
-...
+  - image: quay.io/testing-farm/nginx:1.12
+    name: nginx-2
+    ports:
+    - containerPort: 8080
+... # Конец документа, нобязательный
+
+
+# чтоб создать под(контейнер) необъодимо выполнить команду 
+# kubectl create -f(файл) и указываем файл yaml
