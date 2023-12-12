@@ -1,12 +1,16 @@
 ---
+# Манифест нашего PersistentVolume
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: fileshare
 spec:
-  storageClassName: csi-ceph-hdd-ms1
+  storageClassName: standard #csi-ceph-hdd-ms1 # это имя зависит от стораджей в кубернетесе
   accessModes:
-  - ReadWriteMany
+  - ReadWriteMany # 
   resources:
     requests:
-      storage: 10Mi
+      storage: 100Mi
+
+# Чтоб посмотреть какие стораджи есть в кластере необходимо выполнить команду kubectl get sc она выведит всю инфу с именами и далее в файл pvc.yaml указываем нужный сторадж
+# 

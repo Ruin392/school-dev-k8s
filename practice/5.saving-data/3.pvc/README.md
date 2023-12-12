@@ -1,5 +1,11 @@
 # PV/PVC
 
+0) Есть основные данные
+	Storage class = хранит параметры подключения
+	PersistentVolumeClaim = описывает требования к тому
+	PersistentVolume = хранит параметры и статус тома
+
+
 1) Применяем манифест pvc.yml
 
 ```bash

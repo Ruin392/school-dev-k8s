@@ -18,7 +18,7 @@ spec:
       labels:
         app: fileshare
     spec:
-      initContainers:
+      initContainers: # это контейнер который запускается перед основным приложением и позволяет выполнить некоторые действия, здесь меняет права
       - image: busybox
         name: mount-permissions-fix
         command: ["sh", "-c", "chmod 777 /data"]
@@ -35,8 +35,8 @@ spec:
             cpu: 10m
             memory: 100Mi
           limits:
-            cpu: 100m
-            memory: 100Mi
+            cpu: 1
+            memory: 1000Mi
         volumeMounts:
         - name: config
           mountPath: /etc/nginx/conf.d
